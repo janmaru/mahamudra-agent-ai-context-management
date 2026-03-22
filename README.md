@@ -262,6 +262,37 @@ The manual `docs/` structure intentionally replaces nested `CLAUDE.md` files and
 
 ---
 
+## Local permissions — `.claude/settings.local.json`
+
+When Claude Code executes a command you approve, it saves the permission to
+`.claude/settings.local.json` so it won't ask again. By default it saves the
+**exact command** (e.g. `Bash(mv docs/context/project.md docs/tech/project.md)`),
+which is useless after that one-time operation.
+
+Generalize permissions into reusable patterns instead:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(wc:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
+```
+
+This file is `.gitignore`d (personal preferences, not shared). Each developer
+sets their own comfort level. The patterns above cover common filesystem and
+git operations without requiring approval on every call.
+
+---
+
 ## What was excluded and why
 
 - **Hooks:** add complexity with no clear benefit for this workflow

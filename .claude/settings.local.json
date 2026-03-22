@@ -2,12 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(cd:*)",
-      "Bash(mkdir -p docs/tech)",
-      "Bash(mkdir -p docs/domain)",
-      "Bash(mv docs/context/project.md docs/tech/project.md)",
-      "Bash(mv docs/context/team.md docs/tech/team.md)",
-      "Bash(mv docs/context/decisions.md docs/tech/decisions.md)",
-      "Bash(rm -rf docs/context)"
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(wc:*)",
+      "Bash(git:*)"
     ]
   }
 }
