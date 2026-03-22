@@ -27,4 +27,4 @@ Files involved, APIs to modify, schema changes, etc.
 - [ ] verifiable criterion 2
 
 ## Notes for Claude
-Specific constraints, things NOT to do, references to decisions.md.
+Specific constraints, things NOT to do, references to `tech/decisions.md`.

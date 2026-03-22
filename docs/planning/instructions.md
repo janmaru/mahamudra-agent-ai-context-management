@@ -15,7 +15,7 @@ At the start of every planning session, always specify:
 
 ## Standard process for a new feature
 
-1. **Analysis** — Claude reads `context/project.md` + `context/decisions.md`
+1. **Analysis** — Claude reads `tech/project.md` + `tech/decisions.md`
 2. **Breakdown** — Claude proposes a split into atomic issues
 3. **Review** — we approve or revise the breakdown
 4. **Spec** — Claude generates `specs/issue-XXX.md` for each approved issue
@@ -51,7 +51,7 @@ P3 — backlog, to be reassessed
 
 At the end of every planning session, Claude updates:
 - `planning/milestone-XX.md` with issues added/modified/closed
-- `context/decisions.md` if new architecture decisions emerged
+- `tech/decisions.md` if new architecture decisions emerged
 
 ---
 
