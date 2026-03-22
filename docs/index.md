@@ -13,6 +13,7 @@ Stack, constraints, conventions, decisions. Rarely changes.
 | `tech/project.md` | Stack, goals, technical constraints, coding conventions |
 | `tech/team.md` | Roles, branch strategy, review process |
 | `tech/decisions.md` | ADR — why we chose X over Y |
+| `tech/trajectory-evaluator.md` | Verify-before-commit pattern for autonomous agents |
 
 ## Domain
 

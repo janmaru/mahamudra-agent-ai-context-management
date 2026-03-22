@@ -1,7 +1,6 @@
 # AI Context Management — A Strategy for Claude Code
 
-**Date:** 2026-03-21
-**Scope:** managing Claude Code's context window on multi-language projects, teams of 2–3 people
+A strategy for managing Claude Code's context window on real projects.
 
 ---
 
@@ -49,7 +48,73 @@ Always pass [`docs/index.md`](docs/index.md) to Claude, then add the files relev
 
 ---
 
-## The problem
+## Why this approach — the underlying problem
+
+### Knowledge conflict in agentic AI
+
+Any context provided to an LLM at inference time (*a posteriori*) competes with the
+knowledge baked into its weights during training (*a priori*). Even when you supply
+the correct facts via RAG, the model's internal weights — trained on billions of
+parameters — act as a self-reinforcing bias. If a model has seen a "fact" 10,000 times
+during training, a single retrieved document stating the opposite may be treated as noise.
+
+When retrieved data is sparse or slightly ambiguous, the model fills in the blanks with
+pre-trained knowledge, producing **hybrid responses** that look authoritative but are
+factually groundless.
+
+### Error propagation and state drift
+
+In long-running agentic operations, a small logic error at step *k* gets saved to memory
+and referenced at step *k+n* as ground truth. This creates two failure modes:
+
+- **Error propagation** — a single hallucination becomes a "fact" in the agent's long-term memory
+- **State drift** — the saved state diverges further from the actual goal with each operation
+
+The outcome is **recursive failure**: the agent attempts to fix an error using the same
+flawed logic that created it, leading to a loop.
+
+### Context compression as information loss
+
+When the context window fills up, the agent summarizes past states to save space.
+Critical information — self-correction triggers, edge cases, constraints — gets flattened
+out. The agent then operates on a lossy version of its own history, missing the details
+that would have prevented mistakes.
+
+### How this strategy mitigates these problems
+
+| Problem | Mitigation |
+|---|---|
+| **Knowledge conflict** | Atomic, manual context: less noise = fewer chances for the model to prefer its weights over the provided context |
+| **Hybrid responses** | Domain files explicitly describe what was built and how it works, reducing the ambiguity the model would fill with pre-trained knowledge |
+| **Error propagation** | No auto-memory, no persistent state between sessions. Every session starts from versioned, human-verified files |
+| **State drift** | Domain files are updated *after* completion, not during. The spec describes the goal, the domain file records the result — the delta is visible |
+| **Recursive failure** | Planning and implementation are separated with explicit human gates. The agent does not self-correct — the developer intervenes between phases |
+| **Context compression** | Just-in-time loading: only what the current task needs enters the window. A typical session (index + domain file + spec) stays under ~300 lines — compression never triggers |
+
+The last point is key: context compression is a downstream problem caused by loading too
+much upstream. This strategy acts upstream.
+
+### Programmatic solution: Trajectory Evaluator
+
+The manual `docs/` strategy controls what **enters** the context. For autonomous agents
+that run without a human in the loop, you also need to control what gets **accepted as
+valid state**. The Trajectory Evaluator pattern adds a verify-before-commit middleware:
+
+1. The agent proposes an action and executes it
+2. An evaluator compares the observation against the agent's internal state
+3. Only verified results are committed to long-term memory
+4. Failures are preserved as **memory triplets** `(Action, Result, Validation_Status)`
+   that survive context pruning — preventing the agent from repeating the same mistake
+
+For the full implementation with Python code, operational integration guide, and
+framework-specific adapters, see [`docs/tech/trajectory-evaluator.md`](docs/tech/trajectory-evaluator.md).
+
+For ongoing research on **verifiable memory** as a more general solution, see
+[Verifiable Memory for LLM Agents](https://arxiv.org/abs/2504.07089).
+
+---
+
+### The practical problem
 
 Claude Code's default setup (hierarchical `CLAUDE.md` files, global memory, hooks) degrades
 performance on real projects. It accumulates contradictory or irrelevant instructions in the
