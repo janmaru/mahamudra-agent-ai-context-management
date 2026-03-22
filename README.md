@@ -13,7 +13,8 @@ docs/
 ├── tech/
 │   ├── project.md                    # stack, goals, constraints, coding conventions
 │   ├── team.md                       # roles, responsibilities, git workflow
-│   └── decisions.md                  # ADR - Architecture Decision Records
+│   ├── decisions.md                  # ADR - Architecture Decision Records
+│   └── trajectory-evaluator.md       # verify-before-commit pattern docs
 │
 ├── domain/
 │   ├── _template.md                  # reusable template for new domain areas
@@ -31,6 +32,11 @@ docs/
 │
 └── ui/
     └── components.md                 # design system, patterns, UI conventions
+
+agent/                                # trajectory evaluator runtime
+├── evaluator.py                      # core loop + fidelity check
+├── memory.py                         # VerifiableMemory + triplets
+└── config.py                         # model settings, thresholds
 ```
 
 ### How to use it
