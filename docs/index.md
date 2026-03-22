@@ -1,44 +1,44 @@
-# [Nome Progetto] — Context Index
+# [Project Name] — Context Index
 
-> Passa sempre questo file a Claude. Aggiungi i file specifici al task corrente.
+> Always pass this file to Claude. Then add the specific files for your current task.
 
 ---
 
-## Cos'è questo progetto
+## What this project is about
 → `context/project.md`
-Stack, obiettivo, vincoli tecnici, convenzioni di codice.
+Stack, goals, technical constraints, coding conventions.
 
-## Chi lavora e come
+## Who works on it and how
 → `context/team.md`
-Ruoli, branch strategy, review process.
+Roles, branch strategy, review process.
 
-## Decisioni architetturali (ADR)
+## Architecture decisions (ADR)
 → `context/decisions.md`
-Perché abbiamo scelto X invece di Y. Da leggere prima di proporre alternative.
+Why we chose X over Y. Read this before proposing alternatives.
 
 ---
 
-## Task corrente
+## Current task
 
-| Tipo task | File da aggiungere |
+| Task type | Files to include |
 |---|---|
-| Nuovo issue / feature | `specs/issue-XXX.md` |
-| Planning sessione | `planning/instructions.md` + milestone attiva |
-| Lavoro su UI | `ui/components.md` + eventuale `[feature].md` |
-| Decisione architetturale | `context/decisions.md` |
-| Review / refactor | `context/project.md` + file specs dell'area |
+| New issue / feature | `specs/issue-XXX.md` |
+| Planning session | `planning/instructions.md` + active milestone |
+| UI work | `ui/components.md` + optional `[feature].md` |
+| Architecture decision | `context/decisions.md` |
+| Review / refactor | `context/project.md` + relevant spec files |
 
 ---
 
-## Milestone attiva
+## Active milestone
 → `planning/milestone-01.md`
-Issue aperti, priorità, dipendenze.
+Open issues, priorities, dependencies.
 
 ---
 
-## Regole per Claude
+## Rules for Claude
 
-- Non inventare convenzioni non presenti in `project.md`
-- Prima di proporre una libreria nuova, verifica che non contraddica `decisions.md`
-- Gli issue in `specs/` sono atomici: lavora su uno alla volta
-- Se una decisione cambia durante il lavoro, segnalalo esplicitamente
+- Do not invent conventions that are not in `project.md`
+- Before suggesting a new library, check that it does not conflict with `decisions.md`
+- Issues in `specs/` are atomic: work on one at a time
+- If a decision changes during work, flag it explicitly

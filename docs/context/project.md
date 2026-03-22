@@ -1,29 +1,29 @@
-# Project — [Nome Progetto]
+# Project — [Project Name]
 
-> Stack, obiettivo, vincoli tecnici, convenzioni di codice.
+> Stack, goals, technical constraints, coding conventions.
 
 ---
 
-## Obiettivo
-[Descrivere l'obiettivo principale del progetto in 2-3 righe]
+## Goal
+[Describe the main objective of the project in 2–3 lines]
 
-## Stack tecnico
-- **Frontend:** [framework, linguaggio, versione]
-- **Backend:** [framework, linguaggio, versione]
-- **Database:** [tipo, versione]
-- **Infra:** [cloud provider, CI/CD, hosting]
+## Tech stack
+- **Frontend:** [framework, language, version]
+- **Backend:** [framework, language, version]
+- **Database:** [type, version]
+- **Infrastructure:** [cloud provider, CI/CD, hosting]
 
-## Vincoli tecnici
-- [vincolo 1]
-- [vincolo 2]
+## Technical constraints
+- [constraint 1]
+- [constraint 2]
 
-## Convenzioni di codice
-- **Lingua del codice:** [italiano / inglese]
+## Coding conventions
+- **Code language:** [English / other]
 - **Naming:** [camelCase / snake_case / etc.]
-- **Commit message:** [formato, lingua]
-- **Branch naming:** [formato]
+- **Commit messages:** [format, language]
+- **Branch naming:** [format]
 
-## Dipendenze chiave
-| Pacchetto | Versione | Motivo |
+## Key dependencies
+| Package | Version | Why we use it |
 |---|---|---|
-| [nome] | [versione] | [perché lo usiamo] |
+| [name] | [version] | [reason] |

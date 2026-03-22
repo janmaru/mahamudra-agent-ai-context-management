@@ -1,26 +1,26 @@
-# Team — Ruoli e workflow
+# Team — Roles and workflow
 
-> Chi lavora e come. Branch strategy, review process.
+> Who works on what. Branch strategy, review process.
 
 ---
 
-## Membri del team
+## Team members
 
-| Nome | Ruolo | Area principale |
+| Name | Role | Primary area |
 |---|---|---|
-| [nome] | [ruolo] | [backend / frontend / fullstack] |
+| [name] | [role] | [backend / frontend / fullstack] |
 
 ## Branch strategy
 - **Main branch:** `main`
-- **Feature branch:** `feature/issue-XXX-descrizione`
-- **Hotfix:** `hotfix/descrizione`
+- **Feature branch:** `feature/issue-XXX-description`
+- **Hotfix:** `hotfix/description`
 
 ## Review process
-1. PR aperta su feature branch
-2. Review da almeno [N] persona/e
-3. CI verde obbligatoria
-4. Merge con [squash / merge commit / rebase]
+1. Open PR from feature branch
+2. At least [N] reviewer(s) required
+3. CI must pass
+4. Merge strategy: [squash / merge commit / rebase]
 
-## Comunicazione
-- [Strumenti usati per comunicare: Slack, Teams, etc.]
-- [Convenzioni su quando fare sync vs async]
+## Communication
+- [Tools used: Slack, Teams, etc.]
+- [When to use sync vs async communication]

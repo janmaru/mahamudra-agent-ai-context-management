@@ -1,23 +1,23 @@
-# UI — Design system e componenti
+# UI — Design system and components
 
-> Pattern, convenzioni UI, componenti riutilizzabili.
+> Patterns, UI conventions, reusable components.
 
 ---
 
 ## Design system
-- **Libreria UI:** [nome, versione]
-- **Tema:** [dark / light / custom]
-- **Breakpoint responsive:** [valori]
+- **UI library:** [name, version]
+- **Theme:** [dark / light / custom]
+- **Responsive breakpoints:** [values]
 
-## Componenti principali
+## Core components
 
-| Componente | Path | Descrizione |
+| Component | Path | Description |
 |---|---|---|
-| [nome] | [path] | [cosa fa] |
+| [name] | [path] | [what it does] |
 
-## Convenzioni UI
-- [convenzione 1]
-- [convenzione 2]
+## UI conventions
+- [convention 1]
+- [convention 2]
 
-## Pattern ricorrenti
-- [pattern 1: come gestiamo form, loading states, errori, etc.]
+## Recurring patterns
+- [pattern 1: how we handle forms, loading states, errors, etc.]

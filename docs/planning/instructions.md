@@ -1,63 +1,63 @@
-# Istruzioni Planning — Come lavorare con Claude
+# Planning Instructions — How to work with Claude
 
-> Questo file definisce il processo di planning. Passalo insieme alla milestone attiva.
-
----
-
-## Modalità di sessione
-
-Quando iniziamo una sessione di planning, specifica sempre:
-- **Obiettivo sessione:** cosa vogliamo decidere o produrre oggi
-- **Orizzonte:** questa milestone / prossimo sprint / lungo termine
-- **Vincoli:** tempo, risorse, dipendenze bloccanti
+> This file defines the planning process. Pass it along with the active milestone.
 
 ---
 
-## Processo standard per una nuova feature
+## Session setup
 
-1. **Analisi** — Claude legge `context/project.md` + `context/decisions.md`
-2. **Breakdown** — Claude propone la suddivisione in issue atomici
-3. **Review** — noi approviamo / modifichiamo il breakdown
-4. **Spec** — Claude genera `specs/issue-XXX.md` per ogni issue approvato
-5. **Priorità** — insieme definiamo l'ordine nella milestone
-
-Regola: non passare alla fase successiva senza conferma esplicita.
+At the start of every planning session, always specify:
+- **Session goal:** what we want to decide or produce today
+- **Horizon:** this milestone / next sprint / long term
+- **Constraints:** time, resources, blocking dependencies
 
 ---
 
-## Come gestire le priorità
+## Standard process for a new feature
 
-Usa sempre questo schema quando ordini gli issue in milestone:
+1. **Analysis** — Claude reads `context/project.md` + `context/decisions.md`
+2. **Breakdown** — Claude proposes a split into atomic issues
+3. **Review** — we approve or revise the breakdown
+4. **Spec** — Claude generates `specs/issue-XXX.md` for each approved issue
+5. **Prioritization** — together we define the order within the milestone
+
+Rule: do not move to the next phase without explicit confirmation.
+
+---
+
+## Priority levels
+
+Always use this scheme when ordering issues in a milestone:
 
 ```
-P0 — bloccante, niente funziona senza questo
-P1 — core della milestone, va fatto in questo ciclo
-P2 — utile ma posticipabile alla milestone successiva
-P3 — backlog, da rivalutare
+P0 — blocker, nothing works without this
+P1 — core to the milestone, must be done this cycle
+P2 — useful but can be deferred to the next milestone
+P3 — backlog, to be reassessed
 ```
 
 ---
 
-## Output attesi da Claude durante il planning
+## Expected outputs from Claude during planning
 
-- Breakdown issue in formato `specs/_template.md`
-- Lista dipendenze tra issue (quale sblocca quale)
-- Flag espliciti su rischi tecnici o ambiguità nelle specs
-- Nessuna implementazione durante il planning — solo analisi e struttura
-
----
-
-## Aggiornamento milestone
-
-Al termine di ogni sessione di planning, Claude aggiorna:
-- `planning/milestone-XX.md` con issue aggiunti/modificati/chiusi
-- `context/decisions.md` se sono emerse nuove decisioni architetturali
+- Issue breakdown following the `specs/_template.md` format
+- Dependency list between issues (which unblocks which)
+- Explicit flags on technical risks or ambiguities in the specs
+- No implementation during planning — analysis and structure only
 
 ---
 
-## Anti-pattern da evitare
+## Milestone updates
 
-- Non fare planning e implementazione nella stessa sessione
-- Non aprire issue senza acceptance criteria verificabili
-- Non aggiungere scope a un issue esistente — aprirne uno nuovo
-- Non lasciare dipendenze implicite: se A blocca B, scriverlo esplicitamente
+At the end of every planning session, Claude updates:
+- `planning/milestone-XX.md` with issues added/modified/closed
+- `context/decisions.md` if new architecture decisions emerged
+
+---
+
+## Anti-patterns to avoid
+
+- Do not mix planning and implementation in the same session
+- Do not open issues without verifiable acceptance criteria
+- Do not expand the scope of an existing issue — open a new one instead
+- Do not leave implicit dependencies: if A blocks B, write it down explicitly

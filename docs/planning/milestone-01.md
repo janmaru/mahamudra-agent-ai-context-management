@@ -1,19 +1,19 @@
-# Milestone 01 — [Titolo milestone]
+# Milestone 01 — [Milestone title]
 
-**Inizio:** YYYY-MM-DD
-**Scadenza:** YYYY-MM-DD
-**Stato:** in-progress
+**Start:** YYYY-MM-DD
+**Deadline:** YYYY-MM-DD
+**Status:** in-progress
 
 ---
 
-## Obiettivo
-[Cosa deve essere completato in questa milestone]
+## Goal
+[What must be completed in this milestone]
 
-## Issue
+## Issues
 
-| # | Titolo | Priorità | Stato | Dipende da |
+| # | Title | Priority | Status | Depends on |
 |---|---|---|---|---|
-| 001 | [titolo] | P0 | draft | — |
+| 001 | [title] | P0 | draft | — |
 
-## Note
-- [eventuali rischi, dipendenze esterne, decisioni aperte]
+## Notes
+- [risks, external dependencies, open decisions]

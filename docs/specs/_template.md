@@ -1,16 +1,16 @@
-# Issue-XXX — [Titolo breve]
+# Issue-XXX — [Short title]
 
-**Stato:** draft | ready | in-progress | done  
-**Assegnato:** [nome]  
+**Status:** draft | ready | in-progress | done
+**Assigned to:** [name]
 **Milestone:** milestone-XX
 
 ---
 
-## Obiettivo
-Una riga: cosa deve fare questa feature/fix.
+## Goal
+One line: what this feature/fix must accomplish.
 
-## Contesto
-Perché serve, cosa si rompe senza, dipendenze da altri issue.
+## Context
+Why this is needed, what breaks without it, dependencies on other issues.
 
 ## Scope
 ### In scope
@@ -19,12 +19,12 @@ Perché serve, cosa si rompe senza, dipendenze da altri issue.
 ### Out of scope
 - ...
 
-## Specifiche tecniche
-File coinvolti, API da modificare, schema changes, ecc.
+## Technical details
+Files involved, APIs to modify, schema changes, etc.
 
 ## Acceptance criteria
-- [ ] criterio verificabile 1
-- [ ] criterio verificabile 2
+- [ ] verifiable criterion 1
+- [ ] verifiable criterion 2
 
-## Note per Claude
-Eventuali vincoli specifici, cosa NON fare, riferimenti a decisions.md.
+## Notes for Claude
+Specific constraints, things NOT to do, references to decisions.md.

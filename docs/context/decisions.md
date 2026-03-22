@@ -1,60 +1,60 @@
 # Architecture Decision Records (ADR)
 
-> Ogni decisione rilevante va documentata qui. Claude legge questo file prima di
-> proporre alternative tecniche. Se una decisione cambia, aggiorna lo stato — 
-> non cancellare la voce precedente.
+> Every significant decision must be documented here. Claude reads this file before
+> proposing technical alternatives. When a decision changes, update its status —
+> never delete the previous entry.
 
 ---
 
-## Come scrivere un ADR
+## How to write an ADR
 
-**Stato possibili:** `accepted` | `superseded` | `deprecated` | `proposed`
-
----
-
-## ADR-001 — [Titolo decisione]
-
-**Data:** YYYY-MM-DD  
-**Stato:** accepted  
-**Autore:** [nome]
-
-### Contesto
-Quale problema stavamo cercando di risolvere, quali erano i vincoli.
-
-### Opzioni valutate
-- **Opzione A** — pro / contro
-- **Opzione B** — pro / contro
-- **Opzione C** — pro / contro
-
-### Decisione
-Abbiamo scelto [opzione] perché [ragione principale].
-
-### Conseguenze
-Cosa cambia nel progetto, vincoli che questa decisione introduce, cosa diventa
-più facile o più difficile.
-
-### Revisione
-Da rivalutare se: [condizione che renderebbe questa decisione obsoleta]
+**Possible statuses:** `accepted` | `superseded` | `deprecated` | `proposed`
 
 ---
 
-## ADR-002 — [Titolo decisione]
+## ADR-001 — [Decision title]
 
-**Data:** YYYY-MM-DD  
-**Stato:** proposed  
-**Autore:** [nome]
+**Date:** YYYY-MM-DD
+**Status:** accepted
+**Author:** [name]
 
-### Contesto
+### Context
+What problem we were trying to solve, what constraints we had.
+
+### Options considered
+- **Option A** — pros / cons
+- **Option B** — pros / cons
+- **Option C** — pros / cons
+
+### Decision
+We chose [option] because [main reason].
+
+### Consequences
+What changes in the project, what constraints this introduces, what becomes
+easier or harder.
+
+### Review trigger
+Revisit this decision if: [condition that would make it obsolete]
+
+---
+
+## ADR-002 — [Decision title]
+
+**Date:** YYYY-MM-DD
+**Status:** proposed
+**Author:** [name]
+
+### Context
 ...
 
-### Opzioni valutate
+### Options considered
 ...
 
-### Decisione
+### Decision
 ...
 
-### Conseguenze
+### Consequences
 ...
 
-### Revisione
+### Review trigger
 ...
