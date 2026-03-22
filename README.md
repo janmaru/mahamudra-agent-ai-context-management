@@ -47,7 +47,7 @@ Always pass [`docs/index.md`](docs/index.md) to Claude, then add the files relev
 |---|---|
 | New issue / feature | [`specs/issue-XXX.md`](docs/specs/_template.md) + relevant `domain/` file(s) |
 | Planning session | [`planning/instructions.md`](docs/planning/instructions.md) + active milestone |
-| Domain exploration | relevant `domain/` file(s) |
+| Domain exploration | relevant [`domain/`](docs/domain/) file(s) |
 | UI work | [`ui/components.md`](docs/ui/components.md) + relevant `domain/` file(s) |
 | Architecture decision | [`tech/decisions.md`](docs/tech/decisions.md) |
 | Review / refactor | [`tech/project.md`](docs/tech/project.md) + relevant spec and domain files |
@@ -134,22 +134,23 @@ picking only the files relevant to the current task.
 **Rationale:** full control over what enters the context window, no cross-project interference,
 files are versioned and readable by the whole team.
 
-**Accepted trade-off:** the developer must remember which files to pass. Mitigated by [`index.md`](docs/index.md).
+**Accepted trade-off:** the developer must remember which files to pass. Mitigated by
+[`docs/index.md`](docs/index.md).
 
 ## The docs/ folder as a manual RAG system
 
-Context documents are organized into thematic folders with atomic granularity.
-Each issue gets its own file. Each domain area gets its own file only when the context
-is large enough to justify it.
+Context documents are organized into thematic folders with atomic granularity. Each issue
+gets its own file ([template](docs/specs/_template.md)). Each domain area gets its own file
+([template](docs/domain/_template.md)) only when the context is large enough to justify it.
 
 **Rationale:** avoid monolithic files where signal drowns in noise. Load only what
 the current task actually needs.
 
 ## Domain files — functional knowledge by area
 
-The `domain/` folder is the living functional documentation of the project. Each file
-covers one bounded context or functional area: its concepts, workflows, business rules,
-and current state.
+The [`domain/`](docs/domain/) folder is the living functional documentation of the project.
+Each file covers one bounded context or functional area: its concepts, workflows, business
+rules, and current state.
 
 **How to split:** one file per area that has its own vocabulary, workflows, and rules.
 If two areas share most of their concepts, keep them together. If a file grows beyond
@@ -184,26 +185,26 @@ domain on every session. Splitting by area gives the same just-in-time control t
 
 ## Atomic issues with a standard template
 
-Every issue/feature has its own [spec file](docs/specs/_template.md) with a goal, scope,
-acceptance criteria, and notes for Claude. The template explicitly includes an "out of scope"
-section and a "notes for Claude" section.
+Every issue/feature has its own spec file ([template](docs/specs/_template.md)) with a goal,
+scope, acceptance criteria, and notes for Claude. The template explicitly includes an
+"out of scope" section and a "notes for Claude" section.
 
 **Rationale:** atomic issues prevent Claude from dragging in context from unrelated features.
 
 ## Planning and implementation are separate
 
-Planning sessions have [dedicated instructions](docs/planning/instructions.md) and follow
-an explicit phased process (analysis → breakdown → review → spec → prioritization).
-Claude does not write code during planning.
+Planning sessions have [dedicated instructions](docs/planning/instructions.md) and follow an
+explicit phased process (analysis → breakdown → review → spec → prioritization). Claude does
+not write code during planning.
 
 **Rationale:** mixing planning and implementation in the same session degrades the quality
 of both. Explicit phase gates with human confirmation prevent scope creep.
 
 ## ADRs for architecture decisions
 
-[Technical decisions](docs/tech/decisions.md) are tracked with context, evaluated options,
-and the reasoning behind the choice. Superseded decisions are not deleted — they are marked
-as `superseded`.
+Technical decisions are tracked in [`tech/decisions.md`](docs/tech/decisions.md) with context,
+evaluated options, and the reasoning behind the choice. Superseded decisions are not
+deleted — they are marked as `superseded`.
 
 **Rationale:** prevents Claude (and team members) from re-proposing alternatives that were
 already evaluated and rejected.
