@@ -11,17 +11,24 @@
 docs/
 ├── index.md                          # entry point for Claude — always include this
 │
-├── context/
+├── tech/
 │   ├── project.md                    # stack, goals, constraints, coding conventions
 │   ├── team.md                       # roles, responsibilities, git workflow
 │   └── decisions.md                  # ADR - Architecture Decision Records
 │
-├── planning/
-│   ├── instructions.md               # how to run planning sessions with Claude
-│   └── milestone-01.md               # current milestone
+├── domain/
+│   ├── _template.md                  # reusable template for new domain areas
+│   ├── [area-1].md                   # e.g. orders, authentication, billing
+│   ├── [area-2].md                   # one file per bounded context / functional area
+│   └── ...
 │
-├── specs/
-│   └── _template.md                  # reusable template for new issues
+├── planning/                         # local only — not pushed to git
+│   ├── instructions.md               # how to run planning sessions with Claude
+│   └── milestone-XX.md               # current milestone
+│
+├── specs/                            # local only — not pushed to git
+│   ├── _template.md                  # reusable template for new issues
+│   └── issue-XXX.md                  # one file per user story / issue
 │
 └── ui/
     └── components.md                 # design system, patterns, UI conventions
@@ -33,11 +40,12 @@ Always pass [`docs/index.md`](docs/index.md) to Claude, then add the files relev
 
 | Task type | Files to include |
 |---|---|
-| New issue / feature | [`specs/issue-XXX.md`](docs/specs/_template.md) |
-| Planning session | [`planning/instructions.md`](docs/planning/instructions.md) + [active milestone](docs/planning/milestone-01.md) |
-| UI work | [`ui/components.md`](docs/ui/components.md) |
-| Architecture decision | [`context/decisions.md`](docs/context/decisions.md) |
-| Review / refactor | [`context/project.md`](docs/context/project.md) + relevant spec files |
+| New issue / feature | [`specs/issue-XXX.md`](docs/specs/_template.md) + relevant `domain/` file(s) |
+| Planning session | [`planning/instructions.md`](docs/planning/instructions.md) + active milestone |
+| Domain exploration | relevant `domain/` file(s) |
+| UI work | [`ui/components.md`](docs/ui/components.md) + relevant `domain/` file(s) |
+| Architecture decision | [`tech/decisions.md`](docs/tech/decisions.md) |
+| Review / refactor | [`tech/project.md`](docs/tech/project.md) + relevant spec and domain files |
 
 ---
 
@@ -60,11 +68,48 @@ files are versioned and readable by the whole team.
 ## The docs/ folder as a manual RAG system
 
 Context documents are organized into thematic folders with atomic granularity.
-Each issue gets its own file. Each UI area gets its own file only when the context
+Each issue gets its own file. Each domain area gets its own file only when the context
 is large enough to justify it.
 
 **Rationale:** avoid monolithic files where signal drowns in noise. Load only what
 the current task actually needs.
+
+## Domain files — functional knowledge by area
+
+The `domain/` folder is the living functional documentation of the project. Each file
+covers one bounded context or functional area: its concepts, workflows, business rules,
+and current state.
+
+**How to split:** one file per area that has its own vocabulary, workflows, and rules.
+If two areas share most of their concepts, keep them together. If a file grows beyond
+~200 lines, look for a natural split.
+
+**What goes in:** what has been built and how it works at the domain level — not code
+structure, not technical details. Think of it as the knowledge a new team member needs
+to understand a feature without reading the code.
+
+**When to update:** after completing a user story that changes or adds domain behavior.
+The spec file describes what to build; the domain file gets updated with what was built.
+
+### Example: a project with three functional areas
+
+```
+domain/
+├── _template.md
+├── orders.md            # order lifecycle, statuses, cancellation rules
+├── inventory.md         # stock levels, reservations, restock workflows
+└── shipping.md          # carrier selection, tracking, delivery confirmation
+```
+
+A developer working on a shipping bug passes `index.md` + `domain/shipping.md`.
+Claude gets the full shipping context without loading anything about orders or inventory.
+
+A user story that spans two areas (e.g. "when an order is cancelled, release inventory")
+gets both files: `domain/orders.md` + `domain/inventory.md`.
+
+**Rationale:** a monolithic functional analysis file forces Claude to receive the entire
+domain on every session. Splitting by area gives the same just-in-time control that
+`specs/` gives for issues.
 
 ## Atomic issues with a standard template
 
@@ -85,7 +130,7 @@ of both. Explicit phase gates with human confirmation prevent scope creep.
 
 ## ADRs for architecture decisions
 
-[Technical decisions](docs/context/decisions.md) are tracked with context, evaluated options,
+[Technical decisions](docs/tech/decisions.md) are tracked with context, evaluated options,
 and the reasoning behind the choice. Superseded decisions are not deleted — they are marked
 as `superseded`.
 
